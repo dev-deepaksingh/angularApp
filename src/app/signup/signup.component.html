@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-md-offset-4 col-lg-offset-4" style="margin-top: 9vh;">
+      <blockquote>
+          <p style="color: #E91E63;">Sign Up</p>
+          <footer>Badmash Company</footer>
+      </blockquote>
+  <form #signupForm="ngForm" (ngSubmit)="signUpData(signupForm)">
+    <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" name="firstname" ngModel required pattern="[a-zA-Z][a-zA-Z]+" #firstName="ngModel">
+    </div>
+    <div *ngIf="firstName?.touched">
+      <div *ngIf="firstName.errors?.required" class="alert alert-danger">First Name is required.</div>
+      <div *ngIf="firstName.errors?.pattern" class="alert alert-danger">First Name is Invalid.</div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name:</label>
+      <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" name="lastname" ngModel required pattern="[a-zA-Z][a-zA-Z]+" #lastName="ngModel">
+    </div>
+    <div *ngIf="lastName?.touched">
+      <div *ngIf="lastName.errors?.required" class="alert alert-danger">Last Name is required.</div>
+      <div *ngIf="lastName.errors?.pattern" class="alert alert-danger">Last Name is Invalid.</div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <!-- pattern="[0-9]*" this pattern for phone number -->
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" ngModel required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #eMail="ngModel">
+    </div>
+    <div *ngIf="eMail?.touched">
+      <div *ngIf="eMail.errors?.required" class="alert alert-danger">Email is required.</div>
+      <div *ngIf="eMail.errors?.pattern" class="alert alert-danger">Email is Invalid.</div>
+    </div>
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" class="form-control" id="country" placeholder="Enter Country" name="country" ngModel required pattern="[a-zA-Z][a-zA-Z]+" #counTry="ngModel">
+    </div>
+    <div *ngIf="counTry?.touched">
+      <div *ngIf="counTry.errors?.required" class="alert alert-danger">Country is required.</div>
+      <div *ngIf="counTry.errors?.pattern" class="alert alert-danger">Country is Invalid.</div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" ngModel required #passWord="ngModel">
+    </div>
+    <div *ngIf="passWord?.touched">
+      <div *ngIf="passWord.errors?.required" class="alert alert-danger">Password is required.</div>
+      <div *ngIf="passWord.errors?.pattern" class="alert alert-danger">Password is Invalid.</div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="signupForm.invalid">Sign Up</button>
+    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+  </form>
+</div>
+</div>
+
+</body>
+</html>

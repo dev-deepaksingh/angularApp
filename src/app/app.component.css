@@ -1,0 +1,9 @@
+.welcome{
+    color: #DD0031;
+}
+.title-style{
+    color: #CCDB39;
+}
+.title-style:hover{
+    font-style: italic;
+}
